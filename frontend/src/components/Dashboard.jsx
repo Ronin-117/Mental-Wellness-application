@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import config from '../config';
 
 function Dashboard() {
   const [moodStats, setMoodStats] = useState([]);
@@ -11,7 +12,7 @@ function Dashboard() {
 
   const fetchMoodStats = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:8000/api/progress/');
+      const response = await axios.get(`${config.backendUrl}/api/progress/`);
       setMoodStats(response.data);
     } catch (error) {
       console.error('Error fetching mood statistics:', error);

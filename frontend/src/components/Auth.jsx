@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import config from '../config';
 
 function Auth({ onAuthSuccess }) {
   const [isLogin, setIsLogin] = useState(true);
@@ -14,9 +15,9 @@ function Auth({ onAuthSuccess }) {
     try {
       let response;
       if (isLogin) {
-        response = await axios.post('http://127.0.0.1:8000/api/login/', { username, password });
+        response = await axios.post(`${config.backendUrl}/api/login/`, { username, password });
       } else {
-        response = await axios.post('http://127.0.0.1:8000/api/register/', { username, password });
+        response = await axios.post(`${config.backendUrl}/api/register/`, { username, password });
       }
       localStorage.setItem('authToken', response.data.token);
       localStorage.setItem('username', response.data.username);

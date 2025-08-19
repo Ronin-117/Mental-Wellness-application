@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import config from '../config';
 
 function Chat() {
   const [messages, setMessages] = useState([]);
@@ -12,7 +13,7 @@ function Chat() {
 
   // const fetchChatHistory = async () => {
   //   try {
-  //     const response = await axios.get('http://127.0.0.1:8000/api/chat-history/', {
+  //     const response = await axios.get(`${config.backendUrl}/api/chat-history/`, {
   //       headers: {
   //         // 'Authorization': `Token YOUR_AUTH_TOKEN`
   //       }
@@ -32,7 +33,7 @@ function Chat() {
     setNewMessage('');
 
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/chat/', {
+      const response = await axios.post(`${config.backendUrl}/api/chat/`, {
         message: newMessage,
       });
       const aiResponse = { text: response.data.response, sender: 'ai' };

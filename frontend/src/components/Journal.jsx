@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import config from '../config';
 
 function Journal() {
   const [entries, setEntries] = useState([]);
@@ -12,7 +13,7 @@ function Journal() {
 
   const fetchJournalEntries = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:8000/api/journal/');
+      const response = await axios.get(`${config.backendUrl}/api/journal/`);
       setEntries(response.data);
     } catch (error) {
       console.error('Error fetching journal entries:', error);
@@ -22,7 +23,7 @@ function Journal() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/journal/', {
+      const response = await axios.post(`${config.backendUrl}/api/journal/`, {
         text: newEntryText,
         mood: selectedMood,
       });
