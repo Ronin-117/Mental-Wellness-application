@@ -3,3 +3,4 @@ djangorestframework==3.15.1
 google-genai
 gunicorn
 whitenoise
+python-dotenv
