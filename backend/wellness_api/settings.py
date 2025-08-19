@@ -32,7 +32,7 @@ SECRET_KEY = "django-insecure-ilo3%24+ah#dkw97i@pnc$z(q)*#sw3(7!ty7u0m8&1e10=+(i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["https://mentalwellenessagent.netlify.app"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
